@@ -28,4 +28,4 @@ jobs:
             npm test
 
       - store_artifacts:
-          path: ./tests
+          path: ./test-results/tests/simple/Check-Snapshot-making/chromium-linux

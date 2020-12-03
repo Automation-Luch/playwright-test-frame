@@ -38,7 +38,7 @@ describe("database", () => {
 
   it("Check for upload file", async () => {
     await followToPage("https://dropmefiles.com.ua/", page);
-    expect(await page.title()).toContain("fast");
+    expect(await page.title()).toContain("файлообменник");
     await uploadFiles('input[type="file"]', "lib/docs/doc.docx", page);
     await shouldExist('[class="removeFile"]', page);
   });
