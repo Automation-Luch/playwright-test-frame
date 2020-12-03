@@ -30,7 +30,7 @@ describe("database", () => {
   });
   it("FillLoginForm", async () => {
     await followToPage(mainPage.URL, page);
-    await click(["mainPage.LOGIN_LINK"], page);
+    await click(mainPage.LOGIN_LINK, page);
     await typeText(loginPage.USERNAME_FIELD, LOGIN, page);
     await typeText(loginPage.PASSWORD_FIELD, PASSWORD, page);
     await click(loginPage.LOGIN_BUTTON, page);
@@ -38,7 +38,7 @@ describe("database", () => {
 
   it("Check for upload file", async () => {
     await followToPage("https://dropmefiles.com.ua/", page, "domcontentloaded");
-    expect(await page.title()).toContain("файлообменник");
+    expect(await page.title()).toContain("fast");
     await uploadFiles('input[type="file"]', "lib/docs/doc.docx", page);
     await shouldExist('[class="removeFile"]', page);
   });
