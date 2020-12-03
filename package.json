@@ -8,7 +8,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "npx folio"
+    "test": "npx folio --param screenshotOnFailure"
   },
   "repository": {
     "type": "git",
