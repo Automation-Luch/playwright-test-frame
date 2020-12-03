@@ -1,14 +1,14 @@
 version: 2.1
 executors:
   docker-publisher:
-    # environment:
-    #   NODE_ENV: development # Needed if playwright is in `devDependencies`
+    environment:
+      NODE_ENV: development # Needed if playwright is in `devDependencies`
     docker:
       - image: mcr.microsoft.com/playwright:bionic
 
 jobs:
   node:
-  working_directory: ~/playwrigth-frame
+  working_directory: ~/playwright-test-frame
   build:
     executor: docker-publisher
     steps:
@@ -22,5 +22,7 @@ jobs:
           name: Run tests
           command: |
             npm test
+
       - store_artifacts:
-          path: ./tests/e2e/reports
+          path: ./tests
+          prefix: tests
