@@ -30,7 +30,7 @@ describe("database", () => {
   });
   it("FillLoginForm", async () => {
     await followToPage(mainPage.URL, page);
-    await click(mainPage.LOGIN_LINK, page);
+    await click(["mainPage.LOGIN_LINK"], page);
     await typeText(loginPage.USERNAME_FIELD, LOGIN, page);
     await typeText(loginPage.PASSWORD_FIELD, PASSWORD, page);
     await click(loginPage.LOGIN_BUTTON, page);

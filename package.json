@@ -22,11 +22,11 @@
   "homepage": "https://github.com/Automation-Luch/tetsFrame#readme",
   "dependencies": {
     "chai": "^4.2.0",
-    "mocha": "^8.2.1",
     "node-fetch": "^2.6.1",
     "playwright": "^1.6.2"
   },
   "devDependencies": {
+    "mocha": "^8.2.1",
     "@playwright/test": "^0.162.0"
   }
 }

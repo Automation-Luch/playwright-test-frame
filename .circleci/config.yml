@@ -22,3 +22,5 @@ jobs:
           name: Run tests
           command: |
             npm test
+      - store_artifacts:
+          path: ./tests/e2e/reports
