@@ -8,7 +8,7 @@ executors:
 
 jobs:
   node:
-  working_directory: /tmp
+  working_directory: ~repo
   build:
     executor: docker-publisher
     steps:
@@ -28,8 +28,4 @@ jobs:
             npm test
 
       - store_artifacts:
-          path: /tmp/artifact-1
-          destination: artifact-file
-
-      - store_artifacts:
-          path: /tmp/artifacts
+          path: ./tests
