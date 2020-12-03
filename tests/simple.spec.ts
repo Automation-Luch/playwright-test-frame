@@ -47,7 +47,7 @@ describe("database", () => {
     await page.goto("https://stackoverflow.com");
     const screenshot = await page.screenshot();
     expect(screenshot).toMatchSnapshot(`test-${browserName}.png`, {
-      threshold: 0.2,
+      threshold: 0.5,
     });
   });
 });
