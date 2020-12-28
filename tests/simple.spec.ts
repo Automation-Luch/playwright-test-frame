@@ -1,7 +1,15 @@
-import { it, expect, describe, beforeAll, afterAll } from "@playwright/test";
+import { it, expect, describe, afterAll, afterEach } from "./fixtures";
+
+// import { beforeAll, afterAll } from "@playwright/test";
 import { LOGIN, PASSWORD } from "../lib/credentials";
 import * as mainPage from "../lib/page-objects/mainPage";
 import * as loginPage from "../lib/page-objects/loginPage";
+import * as uploadPage from "../lib/page-objects/uploadPage";
+import {
+  BASE_WORD,
+  SEARCH_INPUT,
+  GOOGLE_URL,
+} from "../lib/page-objects/googlePage";
 
 import {
   click,
@@ -9,45 +17,57 @@ import {
   followToPage,
   shouldExist,
   uploadFiles,
-  initBrowserAndPage,
+  screenshotMatching,
+  waitForRequestInclude,
+  clearAndTypeText,
+  waitForValue,
+  waitForResponseInclude,
 } from "../lib/helpers";
-let page;
-describe("database", () => {
-  beforeAll(async ({ browser }) => {
-    const data = await initBrowserAndPage({ browser });
-    page = data.page;
-  });
 
+describe("Tests on the Rozetka", () => {
   afterAll(async ({ browser }) => {
     await browser.close();
   });
+  afterEach(async function ({ testInfo }) {});
 
-  it("Go to the ROZETKA main page, check search field and title", async () => {
-    await followToPage(mainPage.URL, page);
-    await shouldExist(mainPage.SEARCH_BUTTON, page);
-    const title = await page.title();
-    expect(title).toContain("ROZETKA");
+  it("Try to open kids product section", async ({ page }) => {
+    await followToPage(mainPage.URL, page, "domcontentloaded");
+    await page.hover(mainPage.KIDS_SECTION);
+    await click(mainPage.KIDS_GAMES_SECTION, page);
+    await waitForRequestInclude("nastoljnye-igry-i-golovolomki", page);
   });
-  it("FillLoginForm", async () => {
-    await followToPage(mainPage.URL, page);
+
+  it("Fill Rozetka login form", async ({ page }) => {
+    await followToPage(mainPage.URL, page, "load");
     await click(mainPage.LOGIN_LINK, page);
     await typeText(loginPage.USERNAME_FIELD, LOGIN, page);
     await typeText(loginPage.PASSWORD_FIELD, PASSWORD, page);
     await click(loginPage.LOGIN_BUTTON, page);
+    await shouldExist(loginPage.PERSONAL_SECTION, page);
   });
 
-  it("Check for upload file", async () => {
+  it("The 'Clear and type' function check", async ({ page }) => {
+    await followToPage(GOOGLE_URL, page);
+    await typeText(SEARCH_INPUT, "chicken", page);
+    await clearAndTypeText(SEARCH_INPUT, BASE_WORD, page);
+    await page.keyboard.press("Enter");
+    await waitForValue(SEARCH_INPUT, BASE_WORD, page);
+    await waitForResponseInclude(BASE_WORD, page);
+  });
+
+  it("Check for upload file", async ({ page }) => {
     await followToPage("https://dropmefiles.com.ua/", page);
     expect(await page.title()).toContain("файлообменник");
-    await uploadFiles('input[type="file"]', "lib/docs/doc.docx", page);
-    await shouldExist('[class="removeFile"]', page);
+    await uploadFiles(
+      uploadPage.UPLOAD_FILE_FIELD,
+      uploadPage.FILE_LOCATION,
+      page
+    );
+    await shouldExist(uploadPage.REMOVE_BUTTON, page);
   });
 
-  it("Check Snapshot making", async ({ browserName }) => {
-    await page.goto("https://stackoverflow.com");
-    const screenshot = await page.screenshot();
-    expect(screenshot).toMatchSnapshot(`test-${browserName}.png`, {
-      threshold: 0.1,
-    });
+  it("Check Snapshot making", async ({ browserName, page }) => {
+    await followToPage("https://stackoverflow.com", page);
+    await screenshotMatching(browserName, page);
   });
 });
