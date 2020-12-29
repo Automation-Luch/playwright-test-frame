@@ -25,10 +25,10 @@ import {
 } from "../lib/helpers";
 
 describe("Tests on the Rozetka", () => {
-  afterAll(async ({ browser }) => {
-    await browser.close();
+  afterAll(async ({ browser }) => {});
+  afterEach(async function ({ testInfo }) {
+    console.log(testInfo);
   });
-  afterEach(async function ({ testInfo }) {});
 
   it("Try to open kids product section", async ({ page }) => {
     await followToPage(mainPage.URL, page, "domcontentloaded");
@@ -38,12 +38,21 @@ describe("Tests on the Rozetka", () => {
   });
 
   it("Fill Rozetka login form", async ({ page }) => {
-    await followToPage(mainPage.URL, page, "load");
+    await followToPage(mainPage.URL, page, "domcontentloaded");
     await click(mainPage.LOGIN_LINK, page);
     await typeText(loginPage.USERNAME_FIELD, LOGIN, page);
     await typeText(loginPage.PASSWORD_FIELD, PASSWORD, page);
     await click(loginPage.LOGIN_BUTTON, page);
     await shouldExist(loginPage.PERSONAL_SECTION, page);
+  });
+});
+
+describe("Check helpers", () => {
+  afterAll(async ({ browser }) => {
+    await browser.close();
+  });
+  afterEach(async function ({ testInfo }) {
+    console.log(testInfo);
   });
 
   it("The 'Clear and type' function check", async ({ page }) => {
