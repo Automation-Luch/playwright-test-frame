@@ -7,7 +7,6 @@ builder.contextOptions.override(
   async ({ contextOptions, browser }, runTest) => {
     const modifiedOptions: BrowserContextOptions = {
       ...contextOptions, // default
-      permissions: ["notifications"],
       geolocation: { latitude: 59.95, longitude: 30.31667 },
       acceptDownloads: true,
       colorScheme: "dark",

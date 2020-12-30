@@ -3,6 +3,8 @@
 Run the test
 Tests can be run on single or multiple browsers and with flags to generate screenshot on test failures.
 
+<br>Each test gets a new isolated page to run the test.</br>
+
 # Run all tests across Chromium, Firefox and WebKit
 
 npx folio
