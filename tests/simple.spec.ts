@@ -29,7 +29,7 @@ describe("Tests on the Rozetka", () => {
   afterEach(async function ({ testInfo }) {});
 
   it("Try to open kids product section", async ({ page }) => {
-    await followToPage(mainPage.URL, page, "domcontentloaded");
+    await followToPage(mainPage.URL, page, "load");
     await page.hover(mainPage.KIDS_SECTION);
     await page.hover(mainPage.KIDS_GAMES_SECTION);
     await click(mainPage.KIDS_GAMES_SECTION, page);
@@ -37,7 +37,7 @@ describe("Tests on the Rozetka", () => {
   });
 
   it("Fill Rozetka login form", async ({ page }) => {
-    await followToPage(mainPage.URL, page, "domcontentloaded");
+    await followToPage(mainPage.URL, page, "load");
     await click(mainPage.LOGIN_LINK, page);
     await typeText(loginPage.USERNAME_FIELD, LOGIN, page);
     await typeText(loginPage.PASSWORD_FIELD, PASSWORD, page);

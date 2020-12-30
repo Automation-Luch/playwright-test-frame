@@ -8,7 +8,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "npx folio --param browserName=chromium --param headful"
+    "test": "npx folio --param browserName=chromium --param screenshotOnFailure --retries 3"
   },
   "repository": {
     "type": "git",
