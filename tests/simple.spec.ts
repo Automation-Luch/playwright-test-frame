@@ -31,7 +31,6 @@ describe("Tests on the Rozetka", () => {
   it("Try to open kids product section", async ({ page }) => {
     await followToPage(mainPage.URL, page, "load");
     await page.hover(mainPage.KIDS_SECTION);
-    await page.hover(mainPage.KIDS_GAMES_SECTION);
     await click(mainPage.KIDS_GAMES_SECTION, page);
     await waitForRequestInclude("nastoljnye-igry-i-golovolomki", page);
   });
