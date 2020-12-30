@@ -30,3 +30,4 @@ export const expect = folio.expect;
 export const describe = folio.describe;
 export const afterAll = folio.afterAll;
 export const afterEach = folio.afterEach;
+export const beforeAll = folio.beforeAll;
