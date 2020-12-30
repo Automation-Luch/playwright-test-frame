@@ -1,6 +1,6 @@
 # playwrigth-test-frame
 
-## Run the test
+#### Run the test
 
 Tests can be run on single or multiple browsers and with flags to generate screenshot on test failures.
 
@@ -26,7 +26,7 @@ npx folio --param slowMo=100
 
 npx folio --param screenshotOnFailure
 
-# Record videos
+##### Record videos
 
 npx folio --param video
 
