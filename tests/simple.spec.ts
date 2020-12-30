@@ -22,6 +22,7 @@ import {
   clearAndTypeText,
   waitForValue,
   waitForResponseInclude,
+  clickIfElementDoesNotDisappears,
 } from "../lib/helpers";
 
 describe("Tests on the Rozetka", () => {
@@ -41,6 +42,7 @@ describe("Tests on the Rozetka", () => {
     await typeText(loginPage.USERNAME_FIELD, LOGIN, page);
     await typeText(loginPage.PASSWORD_FIELD, PASSWORD, page);
     await click(loginPage.LOGIN_BUTTON, page);
+    await clickIfElementDoesNotDisappears(loginPage.LOGIN_BUTTON, page);
     await shouldExist(loginPage.PERSONAL_SECTION, page);
   });
 });
