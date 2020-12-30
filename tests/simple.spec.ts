@@ -62,7 +62,7 @@ describe("Check helpers", () => {
   });
 
   it("Check for upload file", async ({ page }) => {
-    await followToPage("https://dropmefiles.com.ua/", page);
+    await followToPage("https://dropmefiles.com.ua/", page, "load");
     await uploadFiles(
       uploadPage.UPLOAD_FILE_FIELD,
       uploadPage.FILE_LOCATION,
