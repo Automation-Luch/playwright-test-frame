@@ -1,15 +1,15 @@
-import { it, expect, describe, afterAll, afterEach } from "../fixtures";
-
+import { it, expect, describe, afterAll, afterEach } from "./fixtures";
+const endpoint = process.env.FOLIO_JUNIT_OUTPUT_NAME;
 // import { beforeAll, afterAll } from "@playwright/test";
-import { LOGIN, PASSWORD } from "../../lib/credentials";
-import * as mainPage from "../../lib/page-objects/mainPage";
-import * as loginPage from "../../lib/page-objects/loginPage";
-import * as uploadPage from "../../lib/page-objects/uploadPage";
+import { LOGIN, PASSWORD } from "../lib/credentials";
+import * as mainPage from "../lib/page-objects/mainPage";
+import * as loginPage from "../lib/page-objects/loginPage";
+import * as uploadPage from "../lib/page-objects/uploadPage";
 import {
   BASE_WORD,
   SEARCH_INPUT,
   GOOGLE_URL,
-} from "../../lib/page-objects/googlePage";
+} from "../lib/page-objects/googlePage";
 
 import {
   click,
@@ -23,13 +23,14 @@ import {
   waitForValue,
   waitForResponseInclude,
   clickIfElementDoesNotDisappears,
-} from "../../lib/helpers";
+} from "../lib/helpers";
 
 describe("Tests on the Rozetka", () => {
   afterAll(async ({ browser }) => {});
   afterEach(async function ({ testInfo }) {});
 
   it("Try to open kids product section", async ({ page }) => {
+    console.log(endpoint);
     await followToPage(mainPage.URL, page, "load");
     await page.hover(mainPage.KIDS_SECTION);
     await click(mainPage.KIDS_GAMES_SECTION, page);
