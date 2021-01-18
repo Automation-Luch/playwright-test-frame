@@ -16,9 +16,10 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: Show Path
           command: |
-            echo $PWD
+            echo $(circleci tests glob tests/*spec.ts)
+            circleci tests glob tests/*spec.ts | xargs -n 1 echo
+
       - run:
           name: Install npm dependencies
           command: |
