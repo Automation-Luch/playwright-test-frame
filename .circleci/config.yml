@@ -18,7 +18,7 @@ jobs:
       - run:
           command: |
             echo $(circleci tests glob tests/*spec.ts)
-            circleci tests glob tests/*spec.ts | xargs -n 1 echo
+            circleci tests glob tests/*spec.ts | circleci tests split --split-by=timings
 
       - run:
           name: Install npm dependencies

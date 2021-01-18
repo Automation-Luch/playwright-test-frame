@@ -1,15 +1,15 @@
-import { it, expect, describe, afterAll, afterEach } from "./fixtures";
+import { it, expect, describe, afterAll, afterEach } from "../fixtures";
 
 // import { beforeAll, afterAll } from "@playwright/test";
-import { LOGIN, PASSWORD } from "../lib/credentials";
-import * as mainPage from "../lib/page-objects/mainPage";
-import * as loginPage from "../lib/page-objects/loginPage";
-import * as uploadPage from "../lib/page-objects/uploadPage";
+import { LOGIN, PASSWORD } from "../../lib/credentials";
+import * as mainPage from "../../lib/page-objects/mainPage";
+import * as loginPage from "../../lib/page-objects/loginPage";
+import * as uploadPage from "../../lib/page-objects/uploadPage";
 import {
   BASE_WORD,
   SEARCH_INPUT,
   GOOGLE_URL,
-} from "../lib/page-objects/googlePage";
+} from "../../lib/page-objects/googlePage";
 
 import {
   click,
@@ -23,7 +23,7 @@ import {
   waitForValue,
   waitForResponseInclude,
   clickIfElementDoesNotDisappears,
-} from "../lib/helpers";
+} from "../../lib/helpers";
 
 describe("Tests on the Rozetka", () => {
   afterAll(async ({ browser }) => {});
