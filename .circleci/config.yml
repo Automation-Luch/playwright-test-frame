@@ -21,6 +21,7 @@ jobs:
       - run:
           name:
           command: |
+            source .config.master.env
             echo "Project endpoint - $FOLIO_JUNIT_OUTPUT_NAME"
       - run:
           name: Run tests
