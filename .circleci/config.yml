@@ -10,7 +10,7 @@ jobs:
   node:
   working_directory: ~repo
   build:
-    script:
+    command:
       - echo "Project endpoint - $FOLIO_JUNIT_OUTPUT_NAME"
     executor: docker-publisher
     steps:
