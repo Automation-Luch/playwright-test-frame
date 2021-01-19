@@ -1,37 +1,6 @@
-<testsuites id="" name="" tests="6" failures="1" skipped="0" errors="0" time="24.378">
-<testsuite name="tests/simple.spec.ts" timestamp="1611054979469" hostname="" tests="5" failures="1" skipped="0" time="15.56" errors="0">
-<testcase name="Tests on the Rozetka Try to open kids product section" classname="tests/simple.spec.ts Tests on the Rozetka" time="4.829">
-</testcase>
-<testcase name="Tests on the Rozetka Fill Rozetka login form" classname="tests/simple.spec.ts Tests on the Rozetka" time="4.584">
-</testcase>
-<testcase name="Check helpers The 'Clear and type' function check" classname="tests/simple.spec.ts Check helpers" time="3.084">
-</testcase>
-<testcase name="Check helpers Check for upload file" classname="tests/simple.spec.ts Check helpers" time="1.865">
-</testcase>
-<testcase name="Check helpers Check Snapshot making" classname="tests/simple.spec.ts Check helpers" time="1.198">
-<failure message="simple.spec.ts:78:3 Check Snapshot making" type="FAILURE">
-  tests/simple.spec.ts:78:3 › Check helpers Check Snapshot making ==================================
-  browserName=chromium, headful=false, slowMo=0, video=false, screenshotOnFailure=false
-
-    TypeError: expect is not a function
-
-      78 |   it(&amp;quot;Check Snapshot making&amp;quot;, async ({ browserName, page }) =&gt; {
-      79 |     await followToPage(&amp;quot;https://example.com/&amp;quot;, page);
-    &gt; 80 |     await screenshotMatching(browserName, page);
-         |     ^
-      81 |   });
-      82 | });
-      83 | 
-
-        at screenshotMatching (/home/oleksii/projects/test-playwrigth/lib/helpers.js:165:5)
-        at /home/oleksii/projects/test-playwrigth/tests/simple.spec.ts:80:5
-        at WorkerRunner._runTestWithFixturesAndHooks (/home/oleksii/projects/test-playwrigth/node_modules/folio/out/workerRunner.js:187:17)
-
-</failure>
-</testcase>
-</testsuite>
-<testsuite name="tests/sptest.spec.ts" timestamp="1611054979469" hostname="" tests="1" failures="0" skipped="0" time="23.765" errors="0">
-<testcase name="should be logged in" classname="tests/sptest.spec.ts " time="23.765">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="6.865">
+<testsuite name="tests/login-with-fixtur.spec.ts" timestamp="1611063495000" hostname="" tests="1" failures="0" skipped="0" time="6.476" errors="0">
+<testcase name="should be logged in" classname="tests/login-with-fixtur.spec.ts " time="6.476">
 </testcase>
 </testsuite>
 </testsuites>

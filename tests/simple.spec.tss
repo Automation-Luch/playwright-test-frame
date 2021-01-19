@@ -1,4 +1,4 @@
-import { folio } from "./fixtures";
+import { folio } from "../lib/fixtures/fixtures";
 const { it, expect, describe, afterAll, afterEach } = folio;
 const endpoint = process.env;
 import { LOGIN, PASSWORD } from "../lib/credentials";

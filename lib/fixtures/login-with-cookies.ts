@@ -1,7 +1,7 @@
 // In tests/fixtures.ts
 import { folio as baseFolio } from "@playwright/test";
 import { Page, BrowserContext } from "playwright";
-import { doLogin } from "../lib/auth";
+import { doLogin } from "../auth";
 // Extend built-in fixtures and declare types for new fixtures
 const builder = baseFolio.extend<
   { loggedInContext: BrowserContext; loggedInPage: Page },
@@ -14,7 +14,6 @@ builder.loggedInState.init(
     // Use the built-in browser fixture
     const page = await browser.newPage();
     await doLogin(page);
-
     // Extract cookies after successful login
     const cookies = await page.context().cookies();
     const state = { cookies };
