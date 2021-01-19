@@ -1,7 +1,8 @@
-import { it, expect, describe, afterAll, afterEach } from "./fixtures";
-const endpoint = process.env.FOLIO_JUNIT_OUTPUT_NAME;
-// import { beforeAll, afterAll } from "@playwright/test";
+import { folio } from "./fixtures";
+const { it, expect, describe, afterAll, afterEach } = folio;
+const endpoint = process.env;
 import { LOGIN, PASSWORD } from "../lib/credentials";
+
 import * as mainPage from "../lib/page-objects/mainPage";
 import * as loginPage from "../lib/page-objects/loginPage";
 import * as uploadPage from "../lib/page-objects/uploadPage";
@@ -30,7 +31,6 @@ describe("Tests on the Rozetka", () => {
   afterEach(async function ({ testInfo }) {});
 
   it("Try to open kids product section", async ({ page }) => {
-    console.log(endpoint);
     await followToPage(mainPage.URL, page, "load");
     await page.hover(mainPage.KIDS_SECTION);
     await click(mainPage.KIDS_GAMES_SECTION, page);
@@ -49,7 +49,9 @@ describe("Tests on the Rozetka", () => {
 });
 
 describe("Check helpers", () => {
-  afterAll(async ({ browser }) => {
+  afterAll(async function ({ browser }) {
+    // await writeLog(true);
+
     await browser.close();
   });
   afterEach(async function ({ testInfo }) {});

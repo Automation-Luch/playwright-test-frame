@@ -13,6 +13,7 @@ builder.contextOptions.override(
       javaScriptEnabled: true,
       viewport: { width: 1920, height: 1080 },
       ignoreHTTPSErrors: true,
+
       userAgent:
         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36",
     };
@@ -24,10 +25,4 @@ builder.contextOptions.override(
   }
 );
 
-const folio = builder.build();
-export const it = folio.it;
-export const expect = folio.expect;
-export const describe = folio.describe;
-export const afterAll = folio.afterAll;
-export const afterEach = folio.afterEach;
-export const beforeAll = folio.beforeAll;
+export const folio = builder.build();
