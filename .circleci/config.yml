@@ -25,5 +25,5 @@ jobs:
 
       - store_artifacts:
           path: ./test-results
+      - store_artifacts:
           path: ./lib
-
