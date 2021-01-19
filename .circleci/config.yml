@@ -9,6 +9,7 @@ executors:
 jobs:
   node:
   working_directory: ~repo
+  build:
     executor: docker-publisher
     steps:
       - checkout
@@ -16,11 +17,11 @@ jobs:
       - run:
           name: Install npm dependencies
           command: |
-            echo "Project endpoint - $FOLIO_JUNIT_OUTPUT_NAME"
-      - run:
-          name: Install npm dependencies
-          command: |
             npm install --save
+      - run:
+          name:
+          command: |
+            echo "Project endpoint - $FOLIO_JUNIT_OUTPUT_NAME"
       - run:
           name: Run tests
           command: |
@@ -28,5 +29,3 @@ jobs:
 
       - store_artifacts:
           path: ./test-results
-      - store_artifacts:
-          path: ./lib
