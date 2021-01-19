@@ -9,13 +9,14 @@ executors:
 jobs:
   node:
   working_directory: ~repo
-  build:
-    command:
-      - echo "Project endpoint - $FOLIO_JUNIT_OUTPUT_NAME"
     executor: docker-publisher
     steps:
       - checkout
       - setup_remote_docker
+      - run:
+          name: Install npm dependencies
+          command: |
+            echo "Project endpoint - $FOLIO_JUNIT_OUTPUT_NAME"
       - run:
           name: Install npm dependencies
           command: |
