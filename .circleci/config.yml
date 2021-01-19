@@ -21,8 +21,7 @@ jobs:
       - run:
           name:
           command: |
-            source .config.master.env
-            echo "Project endpoint - $FOLIO_JUNIT_OUTPUT_NAME"
+            export FOLIO_JUNIT_OUTPUT_NAME="report/junit.xml"
       - run:
           name: Run tests
           command: |
@@ -31,4 +30,4 @@ jobs:
       - store_artifacts:
           path: ./test-results
       - store_artifacts:
-          path: ./lib
+          path: ./report
