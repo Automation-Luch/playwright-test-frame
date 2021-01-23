@@ -1,6 +1,0 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="6.865">
-<testsuite name="tests/login-with-fixtur.spec.ts" timestamp="1611063495000" hostname="" tests="1" failures="0" skipped="0" time="6.476" errors="0">
-<testcase name="should be logged in" classname="tests/login-with-fixtur.spec.ts " time="6.476">
-</testcase>
-</testsuite>
-</testsuites>
