@@ -1,6 +1,6 @@
 import { it, describe } from "../lib/fixtures/base-fixture";
-import { followToPage, shouldExist } from "../lib/helpers";
-import { PAGESCREEN_SITE } from "../lib/text-helpers";
+import { followToPage, shouldExist } from "../lib/helpers/helpers";
+import { PAGESCREEN_SITE } from "../lib/helpers/text-helpers";
 
 describe("Check that the cookies are set by default for all it", () => {
   it("should be logged in", async ({ loggedInPage }) => {

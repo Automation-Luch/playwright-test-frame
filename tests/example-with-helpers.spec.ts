@@ -1,7 +1,7 @@
 import { folio } from "../lib/fixtures/base-fixture";
-const { it, describe, afterAll } = folio;
+const { it, describe, expect, afterAll } = folio;
 
-import * as text from "../lib/text-helpers";
+import * as text from "../lib/helpers/text-helpers";
 
 import * as uploadPage from "../lib/page-objects/uploadPage";
 import {
@@ -19,7 +19,7 @@ import {
   clearAndTypeText,
   waitForValue,
   waitForResponseInclude,
-} from "../lib/helpers";
+} from "../lib/helpers/helpers";
 
 describe("Check helpers", () => {
   afterAll(async function ({ browser }) {
@@ -47,6 +47,6 @@ describe("Check helpers", () => {
 
   it("Check Snapshot making", async ({ browserName, page }) => {
     await followToPage(text.EXAMPLE_SITE, page);
-    await screenshotMatching(browserName, page);
+    await screenshotMatching(browserName, expect, page);
   });
 });

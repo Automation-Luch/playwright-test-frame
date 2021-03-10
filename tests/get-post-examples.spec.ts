@@ -1,7 +1,7 @@
 import { it, describe, afterAll, expect } from "@playwright/test";
-import { ororo } from "../lib/credentials";
+import { ororo } from "../lib/helpers/credentials";
 
-import { getRequest, postRequest } from "../lib/helpers";
+import { getRequest, postRequest } from "../lib/helpers/helpers";
 
 describe("GET and POST requests example", () => {
   it("Test ability to get request", async ({}) => {

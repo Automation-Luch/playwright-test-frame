@@ -1,8 +1,6 @@
-// In tests/fixtures.ts
 import { folio as baseFolio } from "@playwright/test";
 import { Page, BrowserContext, BrowserContextOptions } from "playwright";
 import { doLogin } from "./auth";
-// Extend built-in fixtures and declare types for new fixtures
 import { RozetkaPage } from "../page-objects/rozetkaPage";
 
 // Extend built-in fixtures and declare types for new fixtures
@@ -31,6 +29,7 @@ builder.contextOptions.override(async ({ contextOptions }, runTest) => {
   // });
   await runTest(modifiedOptions);
 });
+
 // Create a fixture which is executed only once per worker
 builder.loggedInState.init(
   async ({ browser }, runTest) => {
@@ -66,15 +65,12 @@ builder.loggedInPage.init(async ({ loggedInContext }, runTest) => {
   runTest(page);
 });
 
-// Create fixture for logged in page
+// Create fixture with page-object
 builder.loggedInPages.init(async ({ context }, runTest) => {
-  // Use the built-in browser fixture
   const page = await context.newPage();
   const rozetka = new RozetkaPage(page);
   // Pass the page-object to other fixtures/tests
   runTest(rozetka);
-
-  // Define fixture scope to worker
 });
 
 export const folio = builder.build();
