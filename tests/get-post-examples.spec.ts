@@ -4,6 +4,9 @@ import { ororo } from "../lib/helpers/credentials";
 import { getRequest, postRequest } from "../lib/helpers/helpers";
 
 describe("GET and POST requests example", () => {
+  afterAll(async function ({ browser }) {
+    await browser.close();
+  });
   it("Test ability to get request", async ({}) => {
     const response = await getRequest(ororo.URL);
     expect(response.status).toBe(200);

@@ -2,10 +2,12 @@ import { folio as baseFolio } from "@playwright/test";
 import { Page, BrowserContext, BrowserContextOptions } from "playwright";
 import { doLogin } from "./auth";
 import { RozetkaPage } from "../page-objects/rozetkaPage";
+import { Login } from "../page-objects/login";
+
 
 // Extend built-in fixtures and declare types for new fixtures
 const builder = baseFolio.extend<
-  { loggedInContext: BrowserContext; loggedInPage: Page; loggedInPages: any },
+  { loggedInContext: BrowserContext; loggedInPage: Page; rozetkaObject: any; multiplePageFirst:any; multiplePageSecond:any },
   { loggedInState: any },
   { pageObjectInState: any }
 >();
@@ -66,12 +68,27 @@ builder.loggedInPage.init(async ({ loggedInContext }, runTest) => {
 });
 
 // Create fixture with page-object
-builder.loggedInPages.init(async ({ context }, runTest) => {
+builder.rozetkaObject.init(async ({ context }, runTest) => {
   const page = await context.newPage();
   const rozetka = new RozetkaPage(page);
   // Pass the page-object to other fixtures/tests
   runTest(rozetka);
 });
+
+
+//Twice Page-object import  for multiple pages
+builder.multiplePageFirst.init(async ({ context }, runTest) => {
+  const page = await context.newPage();
+  const login = new Login(page);
+  runTest(login);
+});
+
+builder.multiplePageSecond.init(async ({ context }, runTest) => {
+  const page = await context.newPage();
+  const login = new Login(page);
+  runTest(login);
+});
+
 
 export const folio = builder.build();
 export const it = folio.it;

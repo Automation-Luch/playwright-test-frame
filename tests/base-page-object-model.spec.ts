@@ -1,20 +1,24 @@
-import { it, describe } from "../lib/fixtures/base-fixture";
+import { folio } from "../lib/fixtures/base-fixture";
+const { it, describe, afterAll,beforeEach } = folio;
 import { rozetka } from "../lib/helpers/credentials";
 
-import { RozetkaPage } from "../lib/page-objects/rozetkaPage";
-
-import { followToPage } from "../lib/helpers/helpers";
 
 describe("Tests on the Rozetka", () => {
-  it("Try to open kids product section", async ({ page }) => {
-    const roz = new RozetkaPage(page);
-    await followToPage(rozetka.URL, page);
-    await roz.openKidsSection();
+  beforeEach(async ({ rozetkaObject }) => {
+    await rozetkaObject.navigate(rozetka.URL)
   });
 
-  it("Fill Rozetka login form", async ({ page }) => {
-    const roz = new RozetkaPage(page);
-    await followToPage(rozetka.URL, page);
-    await roz.loginToRozetka(rozetka.LOGIN, rozetka.PASSWORD);
+  afterAll(async ({ browser }) => {
+    await browser.close();
   });
+
+  it("Fill Rozetka login form", async ({ rozetkaObject }) => {
+    await rozetkaObject.loginToRozetka(rozetka.LOGIN, rozetka.PASSWORD);
+  });
+
+  it("Try to open kids product section", async ({ rozetkaObject }) => {
+    await rozetkaObject.openKidsSection();
+  });
+
+
 });
