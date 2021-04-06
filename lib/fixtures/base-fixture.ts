@@ -8,8 +8,7 @@ import { Login } from "../page-objects/login";
 // Extend built-in fixtures and declare types for new fixtures
 const builder = baseFolio.extend<
   { loggedInContext: BrowserContext; loggedInPage: Page; rozetkaObject: any; multiplePageFirst:any; multiplePageSecond:any },
-  { loggedInState: any },
-  { pageObjectInState: any }
+  { loggedInState: any }
 >();
 // Set default settings for all pages
 builder.contextOptions.override(async ({ contextOptions }, runTest) => {
@@ -55,17 +54,12 @@ builder.loggedInContext.init(async ({ context, loggedInState }, runTest) => {
   // Load the state in the context
   const { cookies } = loggedInState;
   await context.addCookies(cookies);
-  // Pass the modified context to other fixtures/tests that depend on loggedInContext
-  runTest(context);
-});
+  const page = await context.newPage();
 
-// Create fixture for logged in page
-builder.loggedInPage.init(async ({ loggedInContext }, runTest) => {
-  const page = await loggedInContext.newPage();
-
-  // Pass the page to other fixtures/tests that depend on loggedInPage
+  // Pass the modified page to other fixtures/tests that depend on loggedInContext
   runTest(page);
 });
+
 
 // Create fixture with page-object
 builder.rozetkaObject.init(async ({ context }, runTest) => {
@@ -74,7 +68,6 @@ builder.rozetkaObject.init(async ({ context }, runTest) => {
   // Pass the page-object to other fixtures/tests
   runTest(rozetka);
 });
-
 
 //Twice Page-object import  for multiple pages
 builder.multiplePageFirst.init(async ({ context }, runTest) => {
