@@ -8,7 +8,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "npx folio --param browserName=chromium --timeout 40000 --param headful --param screenshotOnFailure --retries 0 --workers 2"
+    "test": "npx folio --param browserName=chromium --timeout 80000 --param headful --param screenshotOnFailure --retries 0"
   },
   "repository": {
     "type": "git",

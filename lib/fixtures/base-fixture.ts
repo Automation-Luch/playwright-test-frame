@@ -1,13 +1,11 @@
 import { folio as baseFolio } from "@playwright/test";
 import { Page, BrowserContext, BrowserContextOptions } from "playwright";
-import { doLogin } from "./auth";
-import { RozetkaPage } from "../page-objects/rozetkaPage";
-import { Login } from "../page-objects/login";
+import { Login } from "../page-objects/authentication";
 
 
 // Extend built-in fixtures and declare types for new fixtures
 const builder = baseFolio.extend<
-  { loggedInContext: BrowserContext; loggedInPage: Page; rozetkaObject: any; multiplePageFirst:any; multiplePageSecond:any },
+  { loggedInContext: BrowserContext; loggedInPage: Page; AltyObject: any; multiplePageFirst:any; multiplePageSecond:any },
   { loggedInState: any }
 >();
 // Set default settings for all pages
@@ -31,56 +29,16 @@ builder.contextOptions.override(async ({ contextOptions }, runTest) => {
   await runTest(modifiedOptions);
 });
 
-// Create a fixture which is executed only once per worker
-builder.loggedInState.init(
-  async ({ browser }, runTest) => {
-    // Use the built-in browser fixture
-    const page = await browser.newPage();
-    await doLogin(page);
-    // Extract cookies after successful login
-    const cookies = await page.context().cookies();
-    const state = { cookies };
-
-    // Pass this state to other fixtures/tests that depend on loggedInState
-    runTest(state);
-
-    // Define fixture scope to worker
-  },
-  { scope: "worker" }
-);
-
-// Create fixture for logged in browser context
-builder.loggedInContext.init(async ({ context, loggedInState }, runTest) => {
-  // Load the state in the context
-  const { cookies } = loggedInState;
-  await context.addCookies(cookies);
-  const page = await context.newPage();
-
-  // Pass the modified page to other fixtures/tests that depend on loggedInContext
-  runTest(page);
-});
-
 
 // Create fixture with page-object
-builder.rozetkaObject.init(async ({ context }, runTest) => {
+builder.AltyObject.init(async ({ context }, runTest) => {
   const page = await context.newPage();
-  const rozetka = new RozetkaPage(page);
+  const rozetka = new Login(page);
   // Pass the page-object to other fixtures/tests
   runTest(rozetka);
 });
 
-//Twice Page-object import  for multiple pages
-builder.multiplePageFirst.init(async ({ context }, runTest) => {
-  const page = await context.newPage();
-  const login = new Login(page);
-  runTest(login);
-});
 
-builder.multiplePageSecond.init(async ({ context }, runTest) => {
-  const page = await context.newPage();
-  const login = new Login(page);
-  runTest(login);
-});
 
 
 export const folio = builder.build();
