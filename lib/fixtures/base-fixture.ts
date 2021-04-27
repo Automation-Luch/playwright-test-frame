@@ -1,12 +1,13 @@
 import { folio as baseFolio } from "@playwright/test";
 import { Page, BrowserContext, BrowserContextOptions } from "playwright";
 import { Login } from "../page-objects/authentication";
+import { AltyCMD } from "../page-objects/alty-cmd";
+
 
 
 // Extend built-in fixtures and declare types for new fixtures
 const builder = baseFolio.extend<
-  { loggedInContext: BrowserContext; loggedInPage: Page; AltyObject: any; multiplePageFirst:any; multiplePageSecond:any },
-  { loggedInState: any }
+  { loggedInContext: BrowserContext; loggedInPage: Page; AltyObject: any;AltyDashboardObject: any }
 >();
 // Set default settings for all pages
 builder.contextOptions.override(async ({ contextOptions }, runTest) => {
@@ -16,32 +17,24 @@ builder.contextOptions.override(async ({ contextOptions }, runTest) => {
     acceptDownloads: true,
     colorScheme: "dark",
     javaScriptEnabled: true,
-    viewport: { width: 1920, height: 1080 },
+    viewport: { width: 1420, height: 740 },
     ignoreHTTPSErrors: true,
 
     userAgent:
       "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36",
   };
 
-  // browser.on("disconnected", async () => {
-  //   console.log("BROWSER has been disconnected");
-  // });
   await runTest(modifiedOptions);
 });
 
-
-// Create fixture with page-object
+// Create fixture with page-object for authentication tests
 builder.AltyObject.init(async ({ context }, runTest) => {
   const page = await context.newPage();
-  const rozetka = new Login(page);
+  const auth = new Login(page);
+  const dashboard = new AltyCMD(page);
+  const all = {auth,dashboard}
   // Pass the page-object to other fixtures/tests
-  runTest(rozetka);
+  runTest(all);
 });
 
-
-
-
 export const folio = builder.build();
-export const it = folio.it;
-export const expect = folio.expect;
-export const describe = folio.describe;
