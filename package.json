@@ -8,7 +8,10 @@
     "test": "tests"
   },
   "scripts": {
-    "lint": "./tests",
+    "prettier": "prettier",
+    "eslint": "eslint",
+    "lint": "eslint ./tests",
+    "lint:fix": "eslint ./tests --fix",
     "test": "npx folio --param browserName=chromium --timeout 80000 --param headful --param screenshotOnFailure --retries 0"
   },
   "repository": {
@@ -22,29 +25,39 @@
   },
   "homepage": "https://github.com/Automation-Luch/tetsFrame#readme",
   "dependencies": {
-    "babel-eslint": "10.1.0",
     "@eslint-kit/eslint-config-base": "^2.1.0",
     "@eslint-kit/eslint-config-node": "^2.0.0",
     "@eslint-kit/eslint-config-prettier": "^2.0.0",
     "@eslint-kit/eslint-config-react": "^2.0.0",
     "@eslint-kit/eslint-config-typescript": "^3.1.1",
+    "babel-eslint": "10.1.0",
+    "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
     "eslint-import-resolver-babel-module": "^5.1.2",
     "eslint-plugin-jest": "^24.0.2",
     "eslint-plugin-jsx-a11y": "^6.3.1",
-    "chai": "^4.2.0",
-    "dotenv": "^8.2.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-unicorn": "^33.0.1",
     "node-fetch": "^2.6.1",
     "playwright": "^1.10.0"
-  },
-  "peerDependencies": {
-    "eslint": "7.9.0"
   },
   "engines": {
     "node": ">=12.x"
   },
   "devDependencies": {
-    "eslint": "7.9.0",
     "@playwright/test": "^0.1100.0",
-    "mocha": "^8.2.1"
+    "babel-eslint": "10.1.0",
+    "eslint": "7.9.0",
+    "eslint-config-base": "^2.1.0",
+    "eslint-config-node": "^2.0.0",
+    "eslint-config-prettier": "^2.0.0",
+    "eslint-config-react": "^2.0.0",
+    "eslint-config-typescript": "^3.1.1",
+    "eslint-import-resolver-babel-module": "^5.1.2",
+    "eslint-plugin-jest": "^24.0.2",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "mocha": "^8.2.1",
+    "prettier": "^2.3.0",
+    "playwright": "^1.10.0"
   }
 }

@@ -12,87 +12,83 @@ const email = emailCreate();
 describe("Alty CMD Authentication", () => {
   
   beforeEach(async ({ AltyObject }) => {
-    await navigate( alty_cmd_stage.URL,AltyObject.page)
+    await navigate( alty_cmd_stage.URL,AltyObject.auth.page)
   });
 
   it("Check the ability to registration with option fields", async ({ AltyObject }) => {
-    await AltyObject.registration(email,alty_cmd_stage.PASSWORD)
-    await AltyObject.confirmation(email,0)
+    await AltyObject.auth.registration(email,alty_cmd_stage.PASSWORD)
+    await AltyObject.auth.confirmation(email,0)
   });
 
   it("Check the ability to registration without option fields", async ({ AltyObject }) => {
-    await AltyObject.registration(email,alty_cmd_stage.PASSWORD,false)
-    await AltyObject.confirmation(email,0)
+    await AltyObject.auth.registration(email,alty_cmd_stage.PASSWORD,false)
+    await AltyObject.auth.confirmation(email,0)
   });
 
   it("Check the ability login and logout ", async ({ AltyObject }) => {
-    await AltyObject.login(email,alty_cmd_stage.PASSWORD,)
-    const navbar = await getText(NAVBAR,AltyObject.page)
-    expect(navbar).toContain("GABY Balaance:");
+    await AltyObject.auth.login(email,alty_cmd_stage.PASSWORD,)
+    const navbar = await getText(NAVBAR,AltyObject.auth.page)
+    expect(navbar).toContain("My Balance:");
    
   });
 
   it("Check the ability to restore password", async ({ AltyObject }) => {
-    await AltyObject.restorePassword(alty_cmd_stage.EMAIL_FOR_RESTORE,alty_cmd_stage.PASSWORD)
-    const resetPage = await getText(FORM,AltyObject.page)
+    await AltyObject.auth.restorePassword(alty_cmd_stage.EMAIL_FOR_RESTORE,alty_cmd_stage.PASSWORD)
+    const resetPage = await getText(FORM,AltyObject.auth.page)
     expect(resetPage).toContain("Your password has been reset.");
   });
 
-});
-
 describe("Alty CMD authentication NEGATIVE tests", () => {
-  beforeEach(async ({ AltyObject }) => {
-    await navigate( alty_cmd_stage.URL, AltyObject.page)
-  });
+
 
   it("Check the ability login with invalid (non-registered) email ", async ({ AltyObject }) => {
-    await AltyObject.login('email@mail.com', alty_cmd_stage.PASSWORD,)
-    const loginError = await getText(ERROR, AltyObject.page)
+    await AltyObject.auth.login('email@mail.com', alty_cmd_stage.PASSWORD,)
+    const loginError = await getText(ERROR, AltyObject.auth.page)
     expect(loginError).toContain(errors.INVALID_CREDENTIALS);
   });
 
   it("Check the ability login with valid email and invalid password ", async ({ AltyObject }) => {
-    await AltyObject.login(alty_cmd_stage.EMAIL_FOR_RESTORE,'ggpp123SS')
-    const loginError = await getText(ERROR, AltyObject.page)
+    await AltyObject.auth.login(alty_cmd_stage.EMAIL_FOR_RESTORE,'ggpp123SS')
+    const loginError = await getText(ERROR, AltyObject.auth.page)
     expect(loginError).toContain(errors.INVALID_CREDENTIALS);
   });
 
   it("Check the ability registration with invalid email address ", async ({ AltyObject }) => {
-    await AltyObject.registration("email",alty_cmd_stage.PASSWORD)
-    const regError = await getText(ERROR, AltyObject.page)
+    await AltyObject.auth.registration("email",alty_cmd_stage.PASSWORD)
+    const regError = await getText(ERROR, AltyObject.auth.page)
     expect(regError).toContain(errors.INVALID_EMAIL);
   });
 
-
+});
     describe("Check that the fields are required", () => {
       afterEach(async ({ AltyObject }) => {
-        const errorText = await getText(ERROR, AltyObject.page)
+        const errorText = await getText(ERROR, AltyObject.auth.page)
         expect(errorText).toContain("This field is required.");
 
       });
 
       it("Check the ability login with empty form ", async ({ AltyObject }) => {
-        await AltyObject.login('','')
+        await AltyObject.auth.login('','')
       });
       
       it("Check the ability login with empty email field  ", async ({ AltyObject }) => {
-        await AltyObject.login('',alty_cmd_stage.PASSWORD)
+        await AltyObject.auth.login('',alty_cmd_stage.PASSWORD)
       });
 
       it("Check the ability login with empty password  ", async ({ AltyObject }) => {
-        await AltyObject.login(alty_cmd_stage.EMAIL_FOR_RESTORE,'')
+        await AltyObject.auth.login(alty_cmd_stage.EMAIL_FOR_RESTORE,'')
       });
 
       it("Check the ability to registration without email and password", async ({ AltyObject }) => {
-        await AltyObject.registration('','')
+        await AltyObject.auth.registration('','')
       });
 
       it("Check the ability to registration without password ", async ({ AltyObject }) => {
-        await AltyObject.registration('email@mail.com','')
+        await AltyObject.auth.registration('email@mail.com','')
       });
 
       it("Check the ability to registration without email ", async ({ AltyObject }) => {
-        await AltyObject.registration('',alty_cmd_stage.PASSWORD)
+        await AltyObject.auth.registration('',alty_cmd_stage.PASSWORD)
       });
   });
 });
