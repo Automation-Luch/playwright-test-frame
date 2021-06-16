@@ -5,12 +5,14 @@ const config: PlaywrightTestConfig = {
 
   use: {
     // Browser options
-    headless: false,
+    headless: true,
     // slowMo: 50,
     timeout: 50000,
     // Context options
     viewport: { width: 1920, height: 1080 },
     ignoreHTTPSErrors: true,
+    screenshot: 'only-on-failure',
+    video: 'retry-with-video',
 
     // Artifacts
   },
@@ -18,15 +20,13 @@ const config: PlaywrightTestConfig = {
   projects: [
     {
       name: 'Chromium',
-      retries: 0,
+      retries: 2,
       timeout: 50000,
       use: {
         // Configure the browser to use.
         browserName: 'chromium',
-
-        // Any Chromium-specific options.
-        viewport: { width: 1920, height: 1080 },
         screenshot: 'only-on-failure',
+        video: 'retry-with-video',
       },
     },
 
@@ -40,7 +40,5 @@ const config: PlaywrightTestConfig = {
     //   use: { browserName: 'webkit' },
     // },
   ],
-  screenshot: 'only-on-failure',
-  video: 'retry-with-video',
 };
 export default config;
