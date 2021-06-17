@@ -12,7 +12,7 @@ npx playwright test
 
 #### Run tests on a single browser
 
-npx playwright test --param browser=chromium
+npx playwright test --browser=chromium
 
 #### Run a single test file
 
@@ -20,17 +20,17 @@ npx playwright test tests/todo-page.spec.ts
 
 #### Run all tests in headful mode
 
-npx playwright test --param headful
+npx playwright test --headful
 
 #### Run tests with slowMo (slows down Playwright operations by n milliseconds)
 
-npx playwright test --param slowMo=100
+npx playwright test --slowMo=100
 
 #### Save screenshots on failure in test-results directory
 
 ##### Record videos
 
-npx playwright test --param video
+npx playwright test --video
 
 #### Retry test failures
 
@@ -46,6 +46,6 @@ Save the run command as an NPM script.
 
 {
 "scripts": {
-"test": "npx playwright test --param {some para}"
+"test": "npx playwright test --{some para}"
 }
 }
