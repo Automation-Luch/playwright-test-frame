@@ -3,7 +3,7 @@ import { test as base } from '@playwright/test';
 import { Login } from '../page-objects/authentication';
 import { AltyCMD } from '../page-objects/alty-cmd';
 
-// Define test fixtures "hello" and "helloWorld".
+// Define test fixtures "login" and "cmd".
 type TestFixtures = {
   login: object;
   cmd: object;
