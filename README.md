@@ -8,35 +8,35 @@ Each test gets a new isolated page to run the test
 
 #### Run all tests across Chromium, Firefox and WebKit
 
-npx folio
+npx playwright
 
 #### Run tests on a single browser
 
-npx folio --param browserName=chromium
+npx playwright --param browserName=chromium
 
 #### Run all tests in headful mode
 
-npx folio --param headful
+npx playwright --param headful
 
 #### Run tests with slowMo (slows down Playwright operations by n milliseconds)
 
-npx folio --param slowMo=100
+npx playwright --param slowMo=100
 
 #### Save screenshots on failure in test-results directory
 
-npx folio --param screenshotOnFailure
+npx playwright --param screenshotOnFailure
 
 ##### Record videos
 
-npx folio --param video
+npx playwright --param video
 
 #### Retry test failures
 
-npx folio --retries 3
+npx playwright --retries 3
 
 #### See all options
 
-npx folio --help
+npx playwright --help
 
 #### Configure NPM scripts
 
@@ -44,6 +44,6 @@ Save the run command as an NPM script.
 
 {
 "scripts": {
-"test": "npx folio --param screenshotOnFailure"
+"test": "npx playwright --param {some para}"
 }
 }
