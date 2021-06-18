@@ -8,15 +8,16 @@ Each test gets a new isolated page to run the test
 
 #### Project configuration
 
-**playwright.config.ts**
+_playwright.config.ts_
 
 it is the most important file where you can to set all configuration for your project such as the :
 
-1.Browsers
-2.Timeouts
-3.retry
-4.Screenshots options
-5.Video recording options
+- Browsers
+- Timeouts
+- retry
+- Screenshots options
+- Video recording options
+
 #### Run all tests across Chromium, Firefox and WebKit
 
 npx playwright test
