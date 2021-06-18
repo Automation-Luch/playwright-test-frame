@@ -16,7 +16,9 @@ it is the most important file where you can to set all configuration for your pr
 - Timeouts
 - retry
 - Screenshots options
-- Video recording options
+- Video recording options and much more
+
+Also, you can set configuration for each description separately
 
 #### Run all tests across Chromium, Firefox and WebKit
 
@@ -30,13 +32,9 @@ npx playwright test --browser=chromium
 
 npx playwright test tests/todo-page.spec.ts
 
-#### Run all tests in headful mode
+#### Run all tests in headed mode
 
-npx playwright test --headful
-
-#### Run tests with slowMo (slows down Playwright operations by n milliseconds)
-
-npx playwright test --slowMo=100
+npx playwright test --headed
 
 #### Save screenshots on failure in test-results directory
 
