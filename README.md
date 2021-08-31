@@ -9,6 +9,7 @@ Open the _playwright-test-frame_ folder in the IDE
 In the terminal enter the _yarn_ command to install all dependencies
 
 You need to set global variables:
+
 ALTY_CMD_URL
 
 ALTY_CMD_LOGIN
