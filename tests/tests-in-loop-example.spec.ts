@@ -23,7 +23,7 @@ test.describe('Check that the fields are required', () => {
   ];
 
   for (const foo of creds) {
-    test.only(`Check the ability login with ${foo.title}`, async ({ auth }) => {
+    test(`Check the ability login with ${foo.title}`, async ({ auth }) => {
       await auth.login(foo.login, foo.password);
     });
   }

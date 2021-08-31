@@ -1,4 +1,4 @@
-import test from '../lib/fixtures/objects-as-default-fixtere-to-test';
+import { test } from '../lib/fixtures/objects-as-default-fixture-to-test';
 import { expect } from '@playwright/test';
 
 import { emailCreate, navigate, typeText, getText } from '../lib/helpers/helpers';

@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import { test } from '../lib/fixtures/objects-as-default-fixtere-to-test';
+import { test } from '../lib/fixtures/objects-as-default-fixture-to-test';
 
 import { click, getText, navigate, emailCreate } from '../lib/helpers/helpers';
 import { errors } from '../lib/helpers/text-helpers';

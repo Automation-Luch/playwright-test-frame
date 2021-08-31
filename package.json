@@ -12,7 +12,7 @@
     "eslint": "eslint",
     "lint": "eslint ./tests",
     "lint:fix": "eslint ./tests --fix",
-    "test": "npx playwright test authentication.spec.ts"
+    "test": "npx playwright test tests/authentication.spec.ts"
   },
   "repository": {
     "type": "git",
