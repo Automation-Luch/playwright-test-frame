@@ -10,8 +10,11 @@ In the terminal enter the _yarn_ command to install all dependencies
 
 You need to set global variables:
 ALTY_CMD_URL
+
 ALTY_CMD_LOGIN
+
 ALTY_CMD_PASSWORD
+
 ALTY_CMD_RESTORE
 
 Run all tests with _yarn test_ command
