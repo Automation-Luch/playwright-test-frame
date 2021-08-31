@@ -1,7 +1,7 @@
 {
   "name": "tetsframe",
   "version": "1.0.0",
-  "description": "automated testing with playwrigth",
+  "description": "automated testing with playwright",
   "main": "index.js",
   "directories": {
     "lib": "lib",
@@ -12,7 +12,7 @@
     "eslint": "eslint",
     "lint": "eslint ./tests",
     "lint:fix": "eslint ./tests --fix",
-    "test": "npx playwright test tests/"
+    "test": "npx playwright test authentication.spec.ts"
   },
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
     "node": ">=12.x"
   },
   "devDependencies": {
-    "@playwright/test": "^1.12.2",
+    "@playwright/test": "^1.14.0",
     "babel-eslint": "10.1.0",
     "eslint": "7.9.0",
     "prettier": "^2.3.0"
