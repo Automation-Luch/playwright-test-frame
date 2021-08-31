@@ -1,5 +1,21 @@
 # playwright-test-frame
 
+#### Installation
+
+Clone the repository
+
+Open the _playwright-test-frame_ fonder in the IDE
+
+In the terminal enter the _yarn_ command to install all dependencies
+
+You need to set global variables:
+ALTY_CMD_URL
+ALTY_CMD_LOGIN
+ALTY_CMD_PASSWORD
+ALTY_CMD_RESTORE
+
+Run all tests with _yarn test_ command
+
 #### Run the test
 
 Tests can be run on single or multiple browsers and with flags to generate screenshot on test failures and record the video when test retry.
